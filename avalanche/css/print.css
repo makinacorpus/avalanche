@@ -5,11 +5,24 @@ A4     498 x 750
 
 /***************************************************************************/
 /* The bits that you probably want to override! */
+@font-face {
+    font-family: 'yanone_kaffeesatzlight';
+    src: url('./theme_extra/fonts/yanonekaffeesatz-light-webfont.eot');
+    src: url('./theme_extra/fonts/yanonekaffeesatz-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./theme_extra/fonts/yanonekaffeesatz-light-webfont.woff') format('woff'),
+         url('./theme_extra/fonts/yanonekaffeesatz-light-webfont.ttf') format('truetype'),
+         url('./theme_extra/fonts/yanonekaffeesatz-light-webfont.svg#yanone_kaffeesatzlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 body {
-  font-size: 20pt;
-  font-family: "Helvetica", "Arial", "Liberation Sans", sans-serif;
-  color: black;
-  background-color: #fff; /* Colour outside of slide */
+    font-size: 24px;
+    font-family: 'yanone_kaffeesatzlight', Verdana, sans-serif;
+    color: black;
+    background-color: #fff; /* Colour outside of slide */
+    width: 100%;
+    height: 100%;
 }
 
 div.presentation, div.slide {
@@ -17,16 +30,28 @@ div.presentation, div.slide {
 }
 
 div.slide h1, div.slide h2, div.slide h3, div.slide h4, div.slide h5, div.slide h6 {
-  color: navy;
+  color: #bece12;
   font-weight: normal;
 }
 
 div.slide h3, div.slide h4, div.slide h5, div.slide h6 {
-  margin-bottom: 6px;
+  margin-bottom: 3px;
 }
 
 div.slide h3 + p, div.slide h4 + p, div.slide h5 + p, div.slide h6 + p {
-  margin-top: 6px;
+  margin-top: 3px;
+}
+
+div.slide h1 {
+  font-size: 32px;
+}
+
+div.slide h2 {
+  font-size: 28px;
+}
+
+div.slide h2 {
+  font-size: 24px;
 }
 
 pre {
@@ -35,7 +60,7 @@ pre {
 }
 
 li {
-  line-height: 1.5em;
+  line-height: 1.35em;
   margin-left: 10pt;
   /*padding: 10px 0*/;
 }
@@ -91,6 +116,15 @@ blockquote q:before { content: '\2018'; }
 blockquote q:after  { content: '\2019'; }
 .cite { margin:0; text-align:right; margin-right: 40px;}
 
+/* Override pygments */
+
+.highlight pre {
+  margin: 0;
+  padding: 0; 
+  border: 1px solid #ddd;
+}
+
+
 /***************************************************************************/
 /* Specific clases for use with the .fx: macro */
 
@@ -115,25 +149,23 @@ blockquote q:after  { content: '\2019'; }
   font-size: 40pt;
 }
 
-.larger section pre {
-  font-size: 14pt;
+pre, tt, code, kbd, samp {
+  font-size: 70%; /* monospace is bigger than yanone_kaffeesatzlight */
+  letter-spacing: 0px;
 }
+
 
 /* titleslide: displaying a title(h1) and subtitle(h2) on the same slide */
 div.titleslide { text-align: center; }
 div.titleslide h1 { padding-top: 50pt; font-size: 60pt; font-weight: bold;}
 
 /* imageslide: covering a whole slide with an image */
-div.slides div.imageslide {margin: 0; width: 750pt; height: 460pt; overflow: hidden}
+div.slides div.imageslide {overflow: hidden}
 div.imageslide img { 
   position: relative; 
-  /*top: -144pt;*/
+  top: -50px;
   /*top: -460pt;*/
   /*left: -10pt; */
-  top: -138pt;
-  left: -10pt;
-  width: 750pt;
-  height: 460pt;
   max-width: 750pt !important; 
   max-height: 460pt !important; 
   z-index: 0; 
@@ -144,6 +176,39 @@ div.imageslide h1 { position: relative; z-index: 3 !important; /*left: 40px; top
 /* black and white header for use with imageslide */
 div.whiteheading h1 {color: #fffffe !important;}
 div.blackheading h1 {color: black !important;}
+
+/* ----- First slide ----- */
+
+.slides .slide-wrapper:first-child .slide {
+  background: url(../logo-black.png) 250px 300px no-repeat;
+  padding-top: 0px;
+}
+
+.slides .slide-wrapper:first-child .slide header:only-child h1 {
+  height: 400px !important;
+}
+
+/* ----- Slide with only a quote ----- */
+
+div.slide.quoteslide blockquote {
+    display: table-cell;
+    width: 100%;
+    height: 400px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+div.slide.quoteslide blockquote p {
+  font-size: 170%;
+  line-height: 170%;
+  font-style: italic;
+}
+
+div.slide.quoteslide cite {
+  float: right;
+  font-style: normal;
+}
+
 
 /***************************************************************************/
 /* Syntax highlighting is by Pygments - select via config file */
@@ -174,18 +239,19 @@ div.presentation, div.slides {
 
 div.slide {
   display: block !important;
-  width: 740pt !important;
-  height: 460pt !important;
-  border: 2pt solid #ddd;
-/*  width      : 100%;
-  height     : 100%;*/
+  /*width: 650pt !important;
+  height: 40pt !important;*/
+  padding-top: 50px;
+  margin-left: 50px;
+  width      : 800px !important;
+  height     : 550px !important;
   overflow   : hidden;
   page-break-after: always;
 }
 
 div.slide div.inner {
-  width: 750pt !important;
-  height: 460pt !important;
+  width: 800px !important;
+  height: 550px !important;
   margin: auto;
   display: table-cell;
   padding: 10pt;
@@ -198,8 +264,8 @@ div.slide div.inner {
 }
 
 .slide header:only-child h1 {
-  width: 750pt !important;
-  height: 460pt !important;
+  width      : 800px !important;
+  height     : 550px !important;
   text-align    : center;
   display       : table-cell;
   vertical-align: middle;
