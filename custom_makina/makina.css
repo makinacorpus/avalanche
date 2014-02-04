@@ -60,6 +60,22 @@ blockquote p {
   border-radius: 5px;
 }
 
+/***************************************************************************/
+/* Specific clases for use with the .fx: macro */
+
+/* smaller and larger */
+.smaller section {
+  font-size: 20px;
+}
+
+.smaller div h1 {
+  font-size: 48px;
+}
+
+.smaller section pre {
+  font-size: 18px;
+}
+
 /* ----- Alternate color for only H1 slides ----- */
 
 .slide.alternate header:only-child h1 {
