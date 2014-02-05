@@ -69,7 +69,8 @@ blockquote p {
 }
 
 .smaller div h1 {
-  font-size: 48px;
+  font-size: 40px;
+  margin-top: 0;
 }
 
 .smaller section pre {
